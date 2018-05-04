@@ -6,8 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Plan_escolar extends Model
 {
-    protected $fillable = ['descripcion','edo'];
-	
+    protected $fillable = ['id','descripcion','edo'];
+	/**
+	 * The database table used by the model.
+	 *
+	 * @var string
+	 */
+	protected $table = 'planes_escolares';
+	public $incrementing = false; // sirve para los ID's que son de tipo string y no arroje valores en 0
 	public function grupos(){
 		return $this->hasMany(Grupo::class);
 	}

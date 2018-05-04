@@ -16,22 +16,19 @@
       <h1 class="h3 mb-3 font-weight-normal">Iniciar sesión</h1>
       
       <label for="User" class="sr-only">Usuario</label>
-      <input id="nc" type="text" class="form-control{{ $errors->has('nc') ? ' is-invalid' : '' }}" 
-      placeholder="Nombre de usuario" name="nc" value="{{ old('nc') }}" required autofocus>
-      @if ($errors->has('nc'))
-          <span class="invalid-feedback">
-              <strong>{{ $errors->first('nc') }}</strong>
-          </span>
+      <input id="name" type="name" placeholder="Escribe tu nombre..." class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+      @if ($errors->has('name'))
+        <span class="invalid-feedback">
+            <strong>{{ $errors->first('name') }}</strong>
+        </span>
       @endif
       
       <label for="Password" class="sr-only">Contraseña</label>
-      <input id="pass" type="password" class="form-control{{ $errors->has('pass') ? ' is-invalid' : '' }}" 
-      placeholder="Contraseña" name="pass" value="{{ old('pass') }}" required>
-
-      @if ($errors->has('pass'))
-          <span class="invalid-feedback">
-              <strong>{{ $errors->first('pass') }}</strong>
-          </span>
+      <input id="password" placeholder='Escribe tu contraseña...' type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+      @if ($errors->has('password'))
+            <span class="invalid-feedback">
+                <strong>{{ $errors->first('password') }}</strong>
+            </span>
       @endif
       
       <button class="btn btn-lg btn-secondary btn-block" type="submit">Iniciar</button>

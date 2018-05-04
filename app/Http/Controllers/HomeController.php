@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Plan_escolar;
 class HomeController extends Controller
 {
     /**
@@ -38,5 +39,10 @@ class HomeController extends Controller
         }
         */
         return view('users.home',compact('visita'));
+    }
+    public function prueba()
+    {
+        $var= Plan_escolar::all();
+        return $var;
     }
 }
