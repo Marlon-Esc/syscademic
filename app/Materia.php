@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Materia extends Model
 {
     protected $fillable = ['anhio','objetivo_gnral','hrs_docente','hrs_independientes','creditos','instalaciones','grado','fk_plan','edo'];
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'materias';
 	
 	public function horario(){
 		return $this->belongsTo(Horario::class);
