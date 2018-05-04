@@ -15,6 +15,7 @@
 
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/prueba', 'HomeController@prueba')->name('prueb');
 
 Route::middleware(['auth','user'])->prefix('user/')->namespace('user')->group(function ()
 	//el prefix es para el nompre de la ruta y el namespace es para la ruta del controller
