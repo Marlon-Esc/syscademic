@@ -15,13 +15,7 @@
 
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/prueba', 'HomeController@prueba')->name('prueb');
-
-Route::middleware(['auth','user'])->prefix('user/')->namespace('user')->group(function ()
-	//el prefix es para el nompre de la ruta y el namespace es para la ruta del controller
-{
-	
-    
-});
+//Route::get('/prueba', 'HomeController@prueba')->name('prueb');
 //Route::get('/', function () { return view('welcome'); }); 
 //Route::get('dashboard', ['middleware' => 'country', function(){ return '<h1>Bienvenido!!</h1>'; }]);
+

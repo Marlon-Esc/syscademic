@@ -26,17 +26,22 @@ class Docente extends Model
     public function horario()
     {
     	// hasMany(RelatedModel, foreignKeyOnRelatedModel = docente_id, localKey = id)
-    	return $this->hasMany(Horario::class);
+    	return $this->hasMany('App\Horario','fk_docente');
     }
     /**
      * Docente has many Usuario.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
+    /**
+     * Docente has one User.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function user()
     {
-    	// hasMany(RelatedModel, foreignKeyOnRelatedModel = docente_id, localKey = id)
-    	return $this->hasMany(User::class);
+        // hasOne(RelatedModel, foreignKeyOnRelatedModel = docente_id, localKey = id)
+        return $this->hasOne('App\User','fk_cuenta');
     }
     /**
      * Docente has many Observacion.

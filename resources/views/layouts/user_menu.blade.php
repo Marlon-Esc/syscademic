@@ -9,7 +9,7 @@
           <img src="{{ asset('img/man.png') }}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>ING. Marlon Escobar </p>
+          <p>{{ session('user_name') }}</p>
           <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> Conectado</a>
         </div>
@@ -41,16 +41,27 @@
           </ul>
         </li>
         <li class="treeview">
-          <a href="#"><i class="fa fa-bookmark"></i> <span>Materias</span>
+          <a href="#"><i class="fa fa-bookmark"></i> <span>Materias cuatrimestral</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><span class="fa fa-circle-o"></span>Robotica</a></li>
-            <li><a href="#"><span class="fa fa-circle-o"></span>Electronica</a></li>
-            <li><a href="#"><span class="fa fa-circle-o"></span>Redes computacionales II</a></li>
-            <li><a href="#"><span class="fa fa-circle-o"></span>Diseño de DB</a></li>
+            @foreach (session('user.mat_cua') as $materia)
+              <li><a href="#"><h6><span class="fa fa-circle-o"> </span> {{ $materia }}</h6></a></li>
+            @endforeach
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#"><i class="fa fa-bookmark"></i> <span>Materias Semestral</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+          </a>
+          <ul class="treeview-menu">
+            @foreach (session('user.mat_sem') as $materia)
+              <li><a href="#"><h6><span class="fa fa-circle-o"></span> {{ $materia }}</h6></a></li>
+            @endforeach
           </ul>
         </li>
 

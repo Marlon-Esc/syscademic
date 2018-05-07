@@ -9,7 +9,6 @@
         <li class="active"></li>
       </ol>
     </section>
-
     <!-- Main content -->
     <section class="content container-fluid">
         @yield('content')

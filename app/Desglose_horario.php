@@ -26,6 +26,6 @@ class Desglose_horario extends Model
     public function horario()
     {
     	// belongsTo(RelatedModel, foreignKey = horario_id, keyOnRelatedModel = id)
-    	return $this->belongsTo(Horario::class);
+    	return $this->belongsTo('App\Horario','fk_horario');
     }
 }

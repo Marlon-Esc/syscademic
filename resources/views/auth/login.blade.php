@@ -12,11 +12,11 @@
 <body class="text-center">
     <form class="form-signin" action="{{ route('login') }}" method="post">
       @csrf
-      <img class="mb-4" src="{{ asset('dist/img/calendar-b.png') }}" alt="" width="72" height="72">
+      <img class="mb-4" src="{{ asset('img/cademic.png') }}" alt="" width="72" height="72">
       <h1 class="h3 mb-3 font-weight-normal">Iniciar sesión</h1>
       
       <label for="User" class="sr-only">Usuario</label>
-      <input id="name" type="name" placeholder="Escribe tu nombre..." class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+      <input id="name" type="name" placeholder="Escribe tu nombre..." class="text-center form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
       @if ($errors->has('name'))
         <span class="invalid-feedback">
             <strong>{{ $errors->first('name') }}</strong>

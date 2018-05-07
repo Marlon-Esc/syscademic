@@ -14,8 +14,15 @@ class Materia extends Model
      */
     protected $table = 'materias';
 	
-	public function horario(){
-		return $this->belongsTo(Horario::class);
+	/**
+	 * Materia has many Horario.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function horario()
+	{
+		// hasMany(RelatedModel, foreignKeyOnRelatedModel = materia_id, localKey = id)
+		return $this->hasMany('App\Horario','clave_materia','clave');
 	}
 	
 	public function temas(){

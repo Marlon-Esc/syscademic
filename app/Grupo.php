@@ -36,7 +36,7 @@ class Grupo extends Model
     public function horario()
     {
     	// belongsTo(RelatedModel, foreignKey = horario_id, keyOnRelatedModel = id)
-    	return $this->belongsTo(Horario::class);
+    	return $this->hasMany(Horario::class,'fk_grupo');
     }
     /**
      * Grupo belongs to Carrera.

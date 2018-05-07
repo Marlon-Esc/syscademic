@@ -24,7 +24,7 @@
               <!-- The user image in the navbar-->
               <img src="{{ asset('img/man.png') }}" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Marlon Escobar</span>
+              <span class="hidden-xs">{{ session('user_name') }}</span>
             </a>
           </li>
           <!-- Control Sidebar Toggle Button -->

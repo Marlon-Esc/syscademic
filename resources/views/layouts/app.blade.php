@@ -49,6 +49,8 @@
           @include('users.index')
           <!-- /.content-wrapper -->
           <!-- Main Footer -->
+          
+         
           @include('layouts.footer')
         <!-- Control Sidebar -->  
       <!-- /.control-sidebar -->
