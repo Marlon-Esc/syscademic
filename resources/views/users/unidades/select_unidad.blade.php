@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('section', $title)
+@section('title', $title)
 @section('content')
    <div class="row no-print">
 	    <div class="col-xs-12">

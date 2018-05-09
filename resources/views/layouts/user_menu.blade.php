@@ -2,6 +2,7 @@
   $cuatri = session('user.mat_cua'); 
   $semestre = session('user.mat_sem'); 
 @endphp 
+@section('section', 'Bienvenido')
  <aside class="main-sidebar">
 
     <!-- sidebar: style can be found in sidebar.less -->
@@ -31,7 +32,7 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header text-center">OPCIONES</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="#"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
+        <li class="active"><a href="{{ route('home') }}"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
         
         <li class="treeview">
           <a href="#"><i class="fa  fa-file-text"></i> <span>Planeaciones</span>
