@@ -19,3 +19,5 @@ Route::get('/', 'HomeController@index')->name('home');
 //Route::get('/', function () { return view('welcome'); }); 
 //Route::get('dashboard', ['middleware' => 'country', function(){ return '<h1>Bienvenido!!</h1>'; }]);
 
+Route::get('/unidades/{id}', ['as' => 'unidad.index','uses' => 'unidadController@index']);
+

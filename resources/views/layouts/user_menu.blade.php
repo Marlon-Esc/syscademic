@@ -1,3 +1,7 @@
+@php
+  $cuatri = session('user.mat_cua'); 
+  $semestre = session('user.mat_sem'); 
+@endphp 
  <aside class="main-sidebar">
 
     <!-- sidebar: style can be found in sidebar.less -->
@@ -11,15 +15,15 @@
         <div class="pull-left info">
           <p>{{ session('user_name') }}</p>
           <!-- Status -->
-          <a href="#"><i class="fa fa-circle text-success"></i> Conectado</a>
+          <a href="{{ route('home') }}"><i class="fa fa-circle text-success"></i> Conectado</a>
         </div>
       </div>
 
       <!-- search form (Optional) -->
       <div class="sidebar-form">
-        <button type="button"  class="btn btn-flat" style="width: 100%;">
+        <a href="http://iesch.edu.mx" type="button"  class="btn btn-flat" style="width: 100%;">
           UNIVERSIDAD SALAZAR
-        </button>
+        </a>
       </div>
       <!-- /.search form -->
 
@@ -41,15 +45,23 @@
           </ul>
         </li>
         <li class="treeview">
-          <a href="#"><i class="fa fa-bookmark"></i> <span>Materias cuatrimestral</span>
+          <a href="#"><i class="fa fa-bookmark"></i> <span>Materias cuatri</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
           </a>
           <ul class="treeview-menu">
-            @foreach (session('user.mat_cua') as $materia)
-              <li><a href="#"><h6><span class="fa fa-circle-o"> </span> {{ $materia }}</h6></a></li>
-            @endforeach
+            @if (count(session('user.mat_cua.nombre')) > 0)
+              @for ($i = 0; $i < count(session('user.mat_cua.nombre')) ; $i++)
+                  <li>
+                    <a href="{{ route('unidad.index', $cuatri['clave'][$i]) }}">
+                        <h6><span class="fa fa-circle-o"> </span> {{ $cuatri['nombre'][$i] }}</h6>
+                      </a>
+                  </li>
+              @endfor  
+            @else
+              <li><a href="#"><h6>No hay materias asignadas</h6></a></li>
+            @endif
           </ul>
         </li>
         <li class="treeview">
@@ -59,10 +71,19 @@
               </span>
           </a>
           <ul class="treeview-menu">
-            @foreach (session('user.mat_sem') as $materia)
-              <li><a href="#"><h6><span class="fa fa-circle-o"></span> {{ $materia }}</h6></a></li>
-            @endforeach
+            @if (count(session('user.mat_cua.nombre')) > 0)
+              @for ($i = 0; $i < count(session('user.mat_sem.nombre')) ; $i++)
+                  <li>
+                    <a href="{{ route('unidad.index', $semestre['clave'][$i]) }}">
+                        <h6><span class="fa fa-circle-o"> </span> {{ $semestre['nombre'][$i] }}</h6>
+                      </a>
+                  </li>
+              @endfor  
+            @else
+              <li><a href="#"><h6>No hay materias asignadas</h6></a></li>
+            @endif
           </ul>
+          
         </li>
 
         <li class="header text-center">CONFIGURACIONES</li>

@@ -33,12 +33,14 @@ class HomeController extends Controller
         $horarios = Horario::where('fk_docente',$id_docent)->get(); //es necesario el where para acceder a los modelos
         foreach ($horarios as $horario) {
             if ($horario->grupo->fk_planesc == 'CUA') {
-                $request->session()->push('user.mat_cua', $horario->materia->nombre);
+                $request->session()->push('user.mat_cua.nombre', $horario->materia->nombre);
+                $request->session()->push('user.mat_cua.clave', $horario->materia->clave);
             } else {
-                $request->session()->push('user.mat_sem', $horario->materia->nombre);
+                $request->session()->push('user.mat_sem.nombre', $horario->materia->nombre);
+                $request->session()->push('user.mat_sem.clave', $horario->materia->clave);
             }
         }
-       return view('users.home',compact('horarios'));
+      return view('users.home',compact('horarios'));
     }
    
 }
