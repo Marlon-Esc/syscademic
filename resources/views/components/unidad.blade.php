@@ -32,7 +32,8 @@
 			            	</div>
 			            	<div class="row">
 			            		<div class="col-md-12">
-			            			<a href="#" type="button" class="btn btn-block btn-warning btn-sm"><span class="fa fa-check-circle-o"></span> Planificar Unidad</a>
+			            			<a href="{{ route('unidad.plan') }}" type="button" class="btn btn-block btn-warning btn-sm"><span class="fa fa-check-circle-o"></span> Planificar Unidad</a>
+
 			            			<br>
 			            			<small class="text-green">Editado 01-01-2018 00:00:00 hrs</small>
 			            		</div>
@@ -50,9 +51,9 @@
 	@else
 	<div class="box-body">
 		<div class="callout callout-danger">
-	        <h4>Lo sentimos :(</h4>
+	        <h4><strong>¡Ups!</strong> Lo sentimos :(</h4>
 
-	        <p>No se han cargado las unidades de esta materia</p>
+	        <p>No se han cargado las unidades y los temas de esta materia</p>
         </div>
 	</div>
 	@endif

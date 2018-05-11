@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Horario;
 use App\Docente;
+use App\Plantilla_docente;
 class HomeController extends Controller
 {
     /**
@@ -28,9 +29,10 @@ class HomeController extends Controller
     {   
         $request->session()->forget('user');
         $name = Auth::user()->name;
-        $id_docent = Docente::find(Auth::user()->fk_cuenta)->id;
+        //$id_docent = Docente::find(Auth::user()->fk_cuenta)->id;
+        $id_plantilla = Plantilla_docente::where('fk_docente',Auth::user()->fk_cuenta)->first(); //se busca el registro donde el docente se encuentre en la plantilla
         session(['user_name' => $name]);
-        $horarios = Horario::where('fk_docente',$id_docent)->get(); //es necesario el where para acceder a los modelos
+        $horarios = Horario::where('fk_plantilla',$id_plantilla->id)->get(); //es necesario el where para acceder a los modelos
         foreach ($horarios as $horario) {
             if ($horario->grupo->fk_planesc == 'CUA') {
                 $request->session()->push('user.mat_cua.nombre', $horario->materia->nombre);
@@ -41,6 +43,7 @@ class HomeController extends Controller
             }
         }
       return view('users.home',compact('horarios'));
+      //return $id_plantilla->id;
     }
    
 }

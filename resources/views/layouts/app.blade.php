@@ -21,7 +21,10 @@
             page. However, you can choose any other skin. Make sure you
             apply the skin class to the body tag so the changes take effect. -->
       <link rel="stylesheet" href="{{ asset('css/_all-skins.min.css') }}">
-      <link rel="stylesheet" href="{{ asset('css/style-login.css') }}">
+      <link rel="stylesheet" href="{{ asset('css/daterangepicker.css') }} ">
+      <!-- bootstrap datepicker -->
+      <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }} ">
+      <link rel="stylesheet" href="{{ asset('css/select2.min.css') }} ">
       
 
       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -67,7 +70,15 @@
 <!-- Bootstrap 3.3.7 -->
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <!-- AdminLTE App -->
+<script src="{{ asset('js/select2.full.min.js') }} "></script>
 <script src="{{ asset('js/adminlte.min.js') }}"></script>
+<script src="{{ asset('js/moment.min.js') }} "></script>
+<script src="{{ asset('js/daterangepicker.js') }}"></script>
+<!-- bootstrap datepicker -->
+<script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap-colorpicker.min.js') }}"></script>
+
+<script src="{{ asset('js/function.js') }}"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

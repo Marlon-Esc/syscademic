@@ -42,4 +42,15 @@ class Horario extends Model
 		// belongsTo(RelatedModel, foreignKey = grupo_id, keyOnRelatedModel = id)
 		return $this->belongsTo(Grupo::class,'fk_grupo');
 	}
+	/**
+	 * Horario belongs to Plantilla_docente.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function plantilla_docente()
+	{
+		// belongsTo(RelatedModel, foreignKey = plantilla_docente_id, keyOnRelatedModel = id)
+		return $this->belongsTo(Plantilla_docente::class,'fk_plantilla');
+	}
+
 }

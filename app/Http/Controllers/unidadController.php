@@ -23,6 +23,6 @@ class unidadController extends Controller
     }
 
     public function planificar(){
-    	//
+    	return view('users.unidades.planificacion');
     }
 }
