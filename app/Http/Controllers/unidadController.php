@@ -8,6 +8,8 @@ use Validator;
 use Response;
 use Illuminate\Support\Facades\Input;
 use App\Docente;
+use App\Horario;
+use App\Plantilla_docente;
 use App\Tema;
 use App\Materia;
 use App\Planeacion_academica;
@@ -56,7 +58,7 @@ class unidadController extends Controller
     	$subtemas= Tema::where('no_unidad',$no_unidad)->get();
         $plan_academic= Planeacion_academica::where('clave_materia',$id)->where('fk_planesc',$mod)->first();
         //return $plan_academic->id;
-    	return view('users.unidades.planificacion',compact('subtemas','plan_academic','mod'));
+    	return view('users.unidades.planificacion',compact('subtemas','plan_academic','mod','id'));
 
     }
     public function store(Request $request, $fk_planacademic)
@@ -88,21 +90,36 @@ class unidadController extends Controller
        return back()->with('success','Se agrego exitosamente tu clase planifica');
        
     }
-    public function fecha(Request $request, $mod)
+    public function fecha(Request $request, $mod, $clave)
     {
+        $id_plantilla = Plantilla_docente::where('fk_docente',Auth::user()->fk_cuenta)->first();
+        $horarios = Horario::where('fk_plantilla',$id_plantilla->id)->where('clave_materia',$clave)->first();
+        $horas_x_semana= $horarios->desglose_horario->sum('hrs_totales');
         $ciclo_actual= Ciclo_escolar::where('fk_planesc',$mod)->where('edo',1)->first();//obtiene ciclo vigente
+        
         if (count($ciclo_actual->clases) == 0) {
             return 'No hay fechas de inicio y fin de clases agregadas';
         } else{ 
-
+            $count_day_asuet=0;
+            foreach ($ciclo_actual->dias_de_asueto as $dia) {
+                if ($dia->fecha_inicio == $dia->fecha_fin ) {
+                    $count_day_asuet++;
+                } else{
+                     $fech1 = strtotime($dia->fecha_inicio);
+                     $fech2 = strtotime($dia->fecha_fin);
+                     for($i=$fech1; $i<=$fech2; $i+=86400)
+                        $count_day_asuet++; // total de dias de asueto
+                }
+            }
+            //echo $count_day_asuet.'<br>';
             /*
                 Obtener la fecha de los examenes y descontarlo en los dias
              
             list($fechaInicio, $fechaFin) = explode('-', $request->range);
             $fech1 = strtotime(str_replace('/', '-', $fechaInicio));
             $fech2 = strtotime(str_replace('/', '-', $fechaFin));
-
             */
+            
             $fech1 = strtotime($ciclo_actual->clases[0]->inicio);
             $fech2 = strtotime($ciclo_actual->clases[0]->fin);
             $l=0; $m=0; $mi=0; $j=0; $v=0;
@@ -130,13 +147,17 @@ class unidadController extends Controller
                  }
 
             }
+            $ciclo_dias_habiles= $l+$m+$mi+$j+$v;
+            $dias_sin_asuet= $ciclo_dias_habiles - $count_day_asuet - 3;
+            $semanas_ciclo= $dias_sin_asuet / 5;
             /*printf("Total_lunes: %s <br>",$l);
             printf("Total_martes: %s <br>",$m);
             printf("Total_miercoles: %s <br>",$mi );
             printf("Total_jueves: %s <br>",$j );
             printf("Total_viernes: %s <br>",$v );*/
 
-            printf("Total_dias_habiles: %s <br>",$day= $l+$m+$mi+$j+$v );
+            printf("Total_dias_habiles: %s <br>", $dias_sin_asuet);
+            printf("Total_semanas: %s <br>", $semanas_ciclo);
 
             /*$fechaInicio= strtotime("22-01-2018");
             $fechaFin=strtotime("31-05-2018");
