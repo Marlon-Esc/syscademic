@@ -1,5 +1,17 @@
+$('#btn_fech').click(function(event) {
+  if ($('#icon_generator').hasClass('fa-spin')) {
+    $('#icon_generator').removeClass('fa-spin');
+  } else {
+    $('#icon_generator').addClass('fa-spin');
+  }
+});
  $('.select2').select2();
- $('#daterange-btn').daterangepicker(
+ $('#reservation').daterangepicker({
+     locale: {
+            format: 'DD/MM/YYYY'
+        }
+ });
+/* $('#daterange-btn').daterangepicker(
       {
         ranges   : {
           'Hoy'       : [moment(), moment()],
@@ -15,7 +27,7 @@
       function (start, end) {
         $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
       }
-    );
+    );*/
   $('#datepicker').datepicker({
       autoclose: true
     });

@@ -26,6 +26,28 @@
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs">{{ session('user_name') }}</span>
             </a>
+            <ul class="dropdown-menu">
+              <!-- User image -->
+              <li class="user-header">
+                <img src="{{ asset('img/man.png') }}" class="img-circle" alt="User Image">
+
+                <p>
+                  {{ session('user_name') }}
+                  
+                </p>
+              </li>
+              <!-- Menu Body -->
+           
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-right">
+                  <a href="#" class="btn btn-default btn-flat"  data-toggle="dropdown" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar sesión</a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                  </form>
+                </div>
+              </li>
+            </ul>
           </li>
           <!-- Control Sidebar Toggle Button -->
           <li>

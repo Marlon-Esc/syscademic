@@ -55,7 +55,7 @@
             @if (count(session('user.mat_cua.nombre')) > 0)
               @for ($i = 0; $i < count(session('user.mat_cua.nombre')) ; $i++)
                   <li>
-                    <a href="{{ route('unidad.index', $cuatri['clave'][$i]) }}">
+                    <a href="{{ route('unidad.index',['id'=>$cuatri['clave'][$i],'mod'=> $cuatri['mod'][$i]]) }}">
                         <h6><span class="fa fa-circle-o"> </span> {{ $cuatri['nombre'][$i] }}</h6>
                       </a>
                   </li>
@@ -75,7 +75,7 @@
             @if (count(session('user.mat_cua.nombre')) > 0)
               @for ($i = 0; $i < count(session('user.mat_sem.nombre')) ; $i++)
                   <li>
-                    <a href="{{ route('unidad.index', $semestre['clave'][$i]) }}">
+                    <a href="{{ route('unidad.index', ['id'=>$semestre['clave'][$i],'mod'=> $semestre['mod'][$i]]) }}">
                         <h6><span class="fa fa-circle-o"> </span> {{ $semestre['nombre'][$i] }}</h6>
                       </a>
                   </li>

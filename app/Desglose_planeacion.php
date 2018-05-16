@@ -11,13 +11,13 @@ class Desglose_planeacion extends Model
      *
      * @var string
      */
-    protected $table = 'desglose_planeacions';
+    protected $table = 'desglose_planeaciones';
     /**
      * Fields that can be mass assigned.
      *
      * @var array
      */
-    protected $fillable = ['semana','fecha','horas','fk_tema','aprendisaje_esperado','actividad_aprendisaje','evidencias_aprendido'];
+    protected $fillable = ['semana','fecha','horas','fk_tema','fk_planaca','aprendisaje_esperado','actividad_aprendisaje','evidencias_aprendido'];
     /**
      * Desglose_planeacion belongs to Tema.
      *

@@ -2,6 +2,9 @@
 @section('section', 'Planificación')
 @section('title', 'Unidades  >  Planificación')
 @section('content')
+@guest
+        @yield('login')
+  @else
 	<div class="row">
 		<div class="col-md-12">
 			<div class="box box-primary color-palette-box">
@@ -31,14 +34,14 @@
 								</div>
 								<div class="box-body ">
 									<ul class="nav nav-pills nav-stacked">
-						                <li><a href="#" style=" border-left-color: #f56954;">No se han encontrado registros...</a></li>
-						                <li><a href="#" style="border-left-color: #f56954;">No se han encontrado registros...</a></li>
-						                <li><a href="#" style="border-left-color: #f56954;">No se han encontrado registros...</a></li>
+						                <li><a href="#" style=" border-left-color: #39CCCC;">No se han encontrado registros...</a></li>
+						                <li><a href="#" style="border-left-color: #39CCCC;">No se han encontrado registros...</a></li>
+						                <li><a href="#" style="border-left-color: #39CCCC;">No se han encontrado registros...</a></li>
 						                <br>
 						                <li>
 						                	<div class="row">
 												<div class="col-md-5 col-md-offset-3">
-													<button type="button" class="btn btn-block btn-warning">ver mas</button>
+													<button  onclick="$('#form-fech').submit();"  type="button" class="btn btn-block btn-warning">ver mas</button>
 												</div>
 											</div>
 						                </li>
@@ -58,9 +61,9 @@
 								</div>	
 								<div class="box-body">
 									<ul class="nav nav-pills nav-stacked">
-						                <li><a href="#" style=" border-left-color: #39CCCC;">No se han encontrado registros...</a></li>
-						                <li><a href="#" style="border-left-color: #39CCCC;">No se han encontrado registros...</a></li>
-						                <li><a href="#" style="border-left-color: #39CCCC;">No se han encontrado registros...</a></li>
+						                <li><a href="#" style=" border-left-color: #00a65a;">No se han encontrado registros...</a></li>
+						                <li><a href="#" style="border-left-color: #00a65a;">No se han encontrado registros...</a></li>
+						                <li><a href="#" style="border-left-color: #00a65a;">No se han encontrado registros...</a></li>
 						                <br>
 						                <li>
 						                	<div class="row">
@@ -85,9 +88,9 @@
 								</div>
 								<div class="box-body">
 					              <ul class="nav nav-pills nav-stacked">
-					                <li><a href="#" style=" border-left-color: #605ca8;">No se han encontrado registros...</a></li>
-					                <li><a href="#" style="border-left-color: #605ca8;">No se han encontrado registros...</a></li>
-					                <li><a href="#" style="border-left-color: #605ca8;">No se han encontrado registros...</a></li>
+					                <li><a href="#" style=" border-left-color: #f56954;">No se han encontrado registros...</a></li>
+					                <li><a href="#" style="border-left-color: #f56954;">No se han encontrado registros...</a></li>
+					                <li><a href="#" style="border-left-color: #f56954;">No se han encontrado registros...</a></li>
 					                <br>
 					                <li>
 					                	<div class="row">
@@ -131,20 +134,28 @@
 							</div>
 						</div>
 						<div class="col-md-6">
-							<div class="form-group text-center">
-				                <label>Inicio y fin de la unidad</label>
-				                  <button type="button" class="btn btn-block  btn-default pull-right" id="daterange-btn">
-				                    <span>
-				                      <i class="fa fa-calendar"></i> Seleccionar rango
-				                    </span>
-				                    <i class="fa fa-caret-down"></i>
-				                  </button>
-				              </div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+							<div class="row">
+								<div class="col-md-9 col-md-offset-2 text-center">
+									<form action="{{ route('unidad.fech',$mod) }}" method="post" id="form-fech">
+										{!!csrf_field()!!}
+										<div class="form-group text-center">
+							                <label>Inicio y fin de la unidad</label>
+							                  <div class="input-group">
+								                  <div class="input-group-addon">
+								                    <i class="fa fa-calendar"></i>
+								                  </div>
+								                  <input type="text" class="form-control pull-right text-center" name="range" id="reservation">
+								               </div>
+							              </div>
+									</form>
+						            </div>
+						        </div>    
+						    </div>
+					    </div>
+				    </div>
+			    </div>
+		    </div>
+	    </div>
     @include('users.unidades.modals_addPlanin')
+ @endguest
 @endsection

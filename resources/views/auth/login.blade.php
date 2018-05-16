@@ -10,6 +10,20 @@
 </head>
 
 <body class="text-center">
+
+    @if( session()->has('Error'))
+        <div class="alert alert-success">
+            <div class="container-fluid">
+                <div class="alert-icon">
+                    <i class="material-icons">check</i>
+                </div>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                </button>
+                {{ session('Error')}}
+            </div>
+        </div>
+    @endif
     <form class="form-signin" action="{{ route('login') }}" method="post">
       @csrf
       <img class="mb-4" src="{{ asset('img/cademic.png') }}" alt="" width="72" height="72">
