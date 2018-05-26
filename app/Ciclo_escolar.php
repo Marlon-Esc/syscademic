@@ -67,4 +67,14 @@ class Ciclo_escolar extends Model
 		// hasMany(RelatedModel, foreignKeyOnRelatedModel = ciclo_escolar_id, localKey = id)
 		return $this->hasMany(Dias_de_asueto::class,'fk_cicloesc');
 	}
+	/**
+	 * Ciclo_escolar has many .
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function parcial()
+	{
+		// hasMany(RelatedModel, foreignKeyOnRelatedModel = ciclo_escolar_id, localKey = id)
+		return $this->hasMany(Parcial::class,'fk_cicloesc');
+	}
 }

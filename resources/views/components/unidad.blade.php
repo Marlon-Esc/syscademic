@@ -6,6 +6,8 @@
     @slot('title') {{ $materia[0]->nombre }} @endslot
     @slot('modalidad') {{ $mod  }} @endslot
     @slot('clave') {{ $id  }} @endslot
+    @slot('fk') {{ $fk  }} @endslot
+
 	@if ($total_temas > 0)
 		@for ($i = 0; $i < $total_temas ; $i++)
 		    <div class="col-md-4">

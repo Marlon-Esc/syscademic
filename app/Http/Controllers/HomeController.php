@@ -39,10 +39,12 @@ class HomeController extends Controller
                         $request->session()->push('user.mat_cua.nombre', $horario->materia->nombre);
                         $request->session()->push('user.mat_cua.clave', $horario->materia->clave);
                         $request->session()->push('user.mat_cua.mod', $horario->grupo->fk_planesc);
+                        $request->session()->push('user.mat_cua.fk_grupo', $horario->fk_grupo);
                     } else {
                         $request->session()->push('user.mat_sem.nombre', $horario->materia->nombre);
                         $request->session()->push('user.mat_sem.clave', $horario->materia->clave);
                         $request->session()->push('user.mat_sem.mod', $horario->grupo->fk_planesc);
+                        $request->session()->push('user.mat_sem.fk_grupo', $horario->fk_grupo);
                     }
                 }
               return view('users.home',compact('horarios'));

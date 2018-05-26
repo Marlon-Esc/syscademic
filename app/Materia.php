@@ -24,7 +24,16 @@ class Materia extends Model
 		// hasMany(RelatedModel, foreignKeyOnRelatedModel = materia_id, localKey = id)
 		return $this->hasMany('App\Horario','clave_materia','clave');
 	}
-	
+	/**
+	 * Materia has many Parcial.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function parcial()
+	{
+		// hasMany(RelatedModel, foreignKeyOnRelatedModel = materia_id, localKey = id)
+		return $this->hasMany(Parcial::class,'clave_materia');
+	}
 	public function temas(){
 		return $this->hasMany(Tema::class);
 	}
