@@ -1,3 +1,28 @@
+function LoadDataTable(id){
+  $('#'+id).DataTable( {
+        "language": {
+            "url": "/Spanish.json"
+        },
+        "sPaginationType":"full_numbers",
+        "order": [[ 0, "asc" ]]
+    });
+} 
+
+function LoadDataTableMod(id,op){
+  var mods=op.split("|");
+
+  $('#'+id).DataTable( {
+    "language": {
+      "url": "/Spanish.json"
+    },
+      'paging'      : +mods[0],
+      'lengthChange': +mods[1],
+      'searching'   : +mods[2],
+      'ordering'    : +mods[3],
+      'info'        : +mods[4],
+      'autoWidth'   : +mods[5]
+  });
+}
 $('#btn_fech').click(function(event) {
   if ($('#icon_generator').hasClass('fa-spin')) {
     $('#icon_generator').removeClass('fa-spin');

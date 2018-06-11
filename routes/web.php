@@ -21,5 +21,7 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/unidades/{mod}/grupo/{id}/{fk}', ['as' => 'unidad.index','uses' => 'unidadController@index']);
 Route::get('/unidades/{mod}/unidad/{id}/{no_unidad}', ['as' => 'unidad.plan','uses' => 'unidadController@unidad']);
-Route::post('/unidades/guardar/{fk_planacademic}', ['as' => 'unidad.store','uses' => 'unidadController@store']);
+Route::post('/unidades/guardar', ['as' => 'unidad.store','uses' => 'unidadController@store']);
 Route::get('/unidades/fech/{mod}/{clave}/{fk}', ['as' => 'unidad.fech','uses' => 'unidadController@fecha']);
+Route::get('planeacion_rpt/{clave}/{mod}','HomeController@generatePDF');
+//Route::get('planeacion_rpt/{id}', 'fpdfController@index');

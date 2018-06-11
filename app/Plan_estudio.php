@@ -46,7 +46,7 @@ class Plan_estudio extends Model
     public function materia()
     {
     	// hasMany(RelatedModel, foreignKeyOnRelatedModel = plan_estudio_id, localKey = id)
-    	return $this->hasMany(Materia::class);
+    	return $this->hasMany(Materia::class,'fk_plan');
     }
 
 }

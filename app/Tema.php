@@ -36,6 +36,6 @@ class Tema extends Model
     public function desglose_planeacion()
     {
     	// hasMany(RelatedModel, foreignKeyOnRelatedModel = tema_id, localKey = id)
-    	return $this->hasMany(Desglose_planeacion::class);
+    	return $this->hasMany(Desglose_planeacion::class,'fk_tema');
     }
 }

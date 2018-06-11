@@ -26,7 +26,7 @@ class Desglose_planeacion extends Model
     public function tema()
     {
     	// belongsTo(RelatedModel, foreignKey = tema_id, keyOnRelatedModel = id)
-    	return $this->belongsTo(Tema::class);
+    	return $this->belongsTo(Tema::class,'fk_tema');
     }
     /**
      * Desglose_planeacion belongs to Planeacion_academica.
