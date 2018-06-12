@@ -35,38 +35,38 @@
 							<table class="table table-bordered">
 								<tbody style="background-color: #C4C4C4FF; font-size: 10px;">
 									<tr>
-										<td><strong>CARRERA:</strong></td>
-										<td><strong>PLAN DE ESTUDIOS (Año):</strong> </td>
-										<td><strong>CICLO ESCOLAR:</strong></td>
+										<td><strong>CARRERA: Ingeniería en Sistemas Computacionales.</strong></td>
+										<td><strong>PLAN DE ESTUDIOS (Año): 2009</strong> </td>
+										<td><strong>CICLO ESCOLAR: {{ $mes_in }}-{{ $mes_fin }}</strong></td>
 									</tr>
 									<tr>
-										<td><strong>ASIGNATURA:</strong> </td>
-										<td><strong>MODALIDAD: </strong></td>
-										<td><strong>CLAVE: </strong></td>
+										<td><strong>ASIGNATURA: {{ $materia->nombre }}</strong> </td>
+										<td><strong>MODALIDAD: {{ $modalidad }}</strong></td>
+										<td><strong>CLAVE: {{ $clave }} </strong></td>
 									</tr>
 									<tr>
-										<td><strong>TOTAL DE HRS DE ACUERDO AL PLAN DE ESTUDIOS:</strong> </td>
-										<td><strong>INDEPENDIENTES: </strong></td>
-										<td><strong>TEORIA:_____HRS. PRACTICA:______HRS.</strong></td>
+										<td><strong>TOTAL DE HRS DE ACUERDO AL PLAN DE ESTUDIOS: {{ $materia->hrs_docente }}</strong> </td>
+										<td><strong>INDEPENDIENTES: {{ $materia->hrs_independientes }} </strong></td>
+										<td><strong>TEORIA:__50___HRS. PRACTICA:___50___HRS.</strong></td>
 									</tr>
 									<tr>
-										<td><strong>HORAS SEMANA:</strong> </td>
-										<td><strong>ASIGNATURA ANTECEDENTE: </strong></td>
-										<td><strong>SUBSECUENTE</strong></td>
+										<td><strong>HORAS SEMANA: {{ $horas_x_semana }}</strong> </td>
+										<td><strong>ASIGNATURA ANTECEDENTE: {{ $antecedente_nom }} </strong></td>
+										<td><strong>SUBSECUENTE: </strong></td>
 									</tr>
 									<tr>
-										<td><strong>CUATRIMESTRE/SEMESTRE: </strong></td>
-										<td><strong>GRUPO: </strong></td>
-										<td><strong>TURNO: </strong></td>
+										<td><strong>CUATRIMESTRE/SEMESTRE: {{ $info_grupo->grado }} </strong></td>
+										<td><strong>GRUPO: {{ $info_grupo->letra }}</strong></td>
+										<td><strong>TURNO: {{ $info_grupo->turno }}</strong></td>
 									</tr>
 									<tr>
-										<td><strong>ÁREA DE FORMACIÓN: </strong></td>
-										<td><strong>SEMANAS PROGRAMADAS:</strong></td>
-										<td><strong>SEMANAS EFECTIVAS: </strong></td>
+										<td><strong>ÁREA DE FORMACIÓN: {{ $materia->area_formacion }}</strong></td>
+										<td><strong>SEMANAS PROGRAMADAS: {{ $sem_prog }}</strong></td>
+										<td><strong>SEMANAS EFECTIVAS: {{ $sem_efecti }}</strong></td>
 									</tr>
 									<tr>
-										<td><strong>DOCENTE: </strong></td>
-										<td><strong>Vo. Bo</strong></td>
+										<td><strong>DOCENTE: {{ $Docente }} </strong></td>
+										<td><strong>Vo. Bo: MTRO. CÉSAR ULISES CORZO NAÑEZ</strong></td>
 										<td> </td>
 									</tr>
 								</tbody>
@@ -97,9 +97,9 @@
 										<th><b>VÍNCULOS DE LA ASIGNATURA CON LOS OBJETIVOS GENERALES DE LA CARRERA:</b></th>
 									</tr>
 								</thead>
-								<tbody>
+								<tbody style="font-size: 11px;">
 									<tr>
-										<td>data</td>
+										<td>INTEGRAR LOS TOPICOS DE LA LÓGICA MATEMATICA Y LA TEORIA DE GRAFOS EN LA INTERPRETACION Y RESOLUCIÓN DE LOS MODELOS MATEMATICOS PARA LOGRAR RESOLVER DE LA MEJOR MANERA PROBLEMAS  LÓGICOS</td>
 									</tr>
 								</tbody>
 							</table>

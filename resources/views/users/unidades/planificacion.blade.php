@@ -50,9 +50,7 @@
 										            <a href="#" class="edit-modal text-green btn-simple btn-sm" title="Editar tema" data-toggle="modal" data-target="#edit" data-id="{{$desg_plan[$i]->id  }}" data-fech="{{date('d-m-Y',strtotime($desg_plan[$i]->fecha)) }}" data-sem="{{ $desg_plan[$i]->semana }}" data-tem="{{ $desg_plan[$i]->tema->nom_tema }}" data-hrs="{{ $desg_plan[$i]->horas }}" data-ae="{{ $desg_plan[$i]->aprendisaje_esperado	 }}" data-aa="{{ $desg_plan[$i]->actividad_aprendisaje }}" data-ea="{{ $desg_plan[$i]->evidencias_aprendido }}">
 										              <i class="fa fa-edit"></i>
 										            </a>
-										            <a href="#" class="delete-modal text-red btn-simple btn-sm" title="Remover tema" data-toggle="modal" data-target="#delet">
-										              <i class="fa fa-times"></i>
-										            </a>
+										       
 						            			</td>
 			            					</tr>
 			            				@endif

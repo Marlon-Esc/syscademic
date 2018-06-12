@@ -24,7 +24,7 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>0</h3>
+              <h3>{{ $plan_term }}</h3>
 
               <p>Planeaciones terminadas</p>
             </div>
@@ -54,7 +54,7 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>0</h3>
+              <h3>{{ $plan_pend }}</h3>
 
               <p>Planeaciones pendientes</p>
             </div>

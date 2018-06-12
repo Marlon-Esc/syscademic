@@ -59,7 +59,7 @@
 			            		<div class="form-group">
 				                  <label>Aprendizaje esperado:</label>
 				                  <textarea class="form-control" rows="3" name="ae" id="ae" placeholder="Escribe aqui los aprendizajes especificos del alumno... "></textarea>
-				                  <a href="#"><small class="pull-right text-blue">Ver sugerencias</small></a>
+				                  
 				                </div>
 			            	</div>
 			            </div>
@@ -68,7 +68,7 @@
 			            		<div class="form-group">
 				                  <label>Actividades de aprendizaje:</label>
 				                  <textarea class="form-control" name="aa" id="aa"  rows="3" placeholder="Escribe aqui la metodología de trabajo que utlizaras... "></textarea>
-				                  <a href="#"><small class="pull-right text-blue">Ver sugerencias</small></a>
+				                  
 				                </div>
 			            	</div>
 			            </div>
@@ -77,7 +77,7 @@
 			            		<div class="form-group">
 				                  <label>Evidencias de aprendizaje:</label>
 				                  <textarea class="form-control" name="ea" id="ea" rows="3" placeholder="Escribe aqui los indicadores de aprendizaje... "></textarea>
-				                  <a href="#"><small class="pull-right text-blue">Ver sugerencias</small></a>
+				                  
 				                </div>
 			            	</div>
 			            </div>

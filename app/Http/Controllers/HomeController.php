@@ -6,10 +6,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Horario;
+use Carbon\Carbon;
 use App\Docente;
 use App\Plantilla_docente;
 use App\Planeacion_academica;
 use App\Desglose_planeacion;
+use App\Ciclo_escolar;
+use App\Materia;
+use App\Grupo;
 use PDF;
 use DB;
 class HomeController extends Controller
@@ -61,10 +65,20 @@ class HomeController extends Controller
 
                     }
                 }
-                
+                  
+                 $cuatri = session('user.mat_cua'); 
+                 $semestre = session('user.mat_sem');
+                 $plan_pend=0;
+                 $plan_term=0;
+                for ($i=0; $i < count(session('user.mat_cua.progreso')) ; $i++) { 
+                    ($cuatri['progreso'][$i] < 100) ? $plan_pend++ : $plan_term++ ;
+                }
+                for ($i=0; $i < count(session('user.mat_sem.progreso')) ; $i++) { 
+                    ($semestre['progreso'][$i] < 100) ? $plan_pend++ : $plan_term++ ;
+                }
 
 
-              return view('users.home',compact('horarios','total_materias','total_grupos'));
+              return view('users.home',compact('horarios','total_materias','total_grupos','plan_pend','plan_term'));
             } else {
                 $request->session()->flush();
                 return abort(404);
@@ -75,11 +89,26 @@ class HomeController extends Controller
         
       //return $id_plantilla->id;
     }
-    public function generatePDF(Request $request,$mod,$clave)
+    public function generatePDF(Request $request,$mod,$clave,$fk)
     {
-        // $data = ['title' => 'Welcome to HDTuto.com'];
-        
+        setlocale(LC_TIME, 'Spanish');
+        $id_plantilla = Plantilla_docente::where('fk_docente',Auth::user()->fk_cuenta)->first();
+        $Docente =Docente::find(Auth::user()->fk_cuenta)->nombre;
+        $ciclo_actual = Ciclo_escolar::where('fk_planesc',$mod)->where('edo',1)->first();
+        $fecha_ini = Carbon::createFromFormat('!m',$ciclo_actual->mes_inicio );
+        $fecha_fin = Carbon::createFromFormat('!m',$ciclo_actual->mes_fin );
+        $mes_in = strftime("%B", $fecha_ini->getTimestamp());
+        $mes_fin = strftime("%B", $fecha_fin->getTimestamp());
+        $materia = Materia::where('clave',$clave)->first();
+        $antecedente = Materia::where('clave',$materia->seriacion)->first();
+        $antecedente_nom= (count($antecedente) > 0) ? $antecedente->nombre : '' ;
+        $modalidad = ($mod == 'CUA') ? 'CUATRIMESTRAL' : 'SEMESTRAL' ;
+        $sem_efecti= ($mod == 'CUA') ? 14 : 18 ;
+        $sem_prog = ($mod == 'CUA') ? 16 : 20 ;
         $planeacion = Planeacion_academica::where('clave_materia',$clave)->where('fk_planesc',$mod)->first();
+        $horarios = Horario::where('fk_plantilla',$id_plantilla->id)->where('clave_materia',$clave)->where('fk_grupo',$fk)->first();
+        $horas_x_semana= $horarios->desglose_horario->sum('hrs_totales');
+        $info_grupo= $horarios->grupo;
         // $desg = Desglose_planeacion::where('fk_planaca',$planeacion->id)->get();
         $desg = DB::table('desglose_planeaciones')
                 ->leftJoin('temas', 'desglose_planeaciones.fk_tema', '=', 'temas.id')
@@ -95,7 +124,7 @@ class HomeController extends Controller
                 ->get();
         //return $concat_fech;
         if (count($desg) >0 ) {
-            $pdf = PDF::loadView('users.unidades.pdf',compact('desg','concat_fech'));
+            $pdf = PDF::loadView('users.unidades.pdf',compact('desg','concat_fech','mes_in','mes_fin','materia','modalidad','clave','antecedente_nom','horas_x_semana','sem_efecti','sem_prog','info_grupo','Docente'));
             return $pdf->stream('planeacion_academica.pdf');
         } else {
             $result_error= '!Ups¡ Lo sentimos, aun no se ha planificado ningun tema';
