@@ -22,7 +22,7 @@
 
       <!-- search form (Optional) -->
       <div class="sidebar-form">
-        <a href="http://iesch.edu.mx" type="button"  class="btn btn-flat" style="width: 100%;">
+        <a href="#" type="button"  class="btn btn-flat" style="width: 100%;">
           UNIVERSIDAD SALAZAR
         </a>
       </div>
@@ -33,20 +33,8 @@
         <li class="header text-center">OPCIONES</li>
         <!-- Optionally, you can add icons to the links -->
         <li class="active"><a href="{{ route('home') }}"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
-        
         <li class="treeview">
-          <a href="#"><i class="fa  fa-file-text"></i> <span>Planeaciones</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#"><span class="fa fa-circle-o"></span>Planeaciones terminadas</a></li>
-            <li><a href="#"><span class="fa fa-circle-o"></span>Planeaciones pendientes</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#"><i class="fa fa-bookmark"></i> <span>Materias cuatri</span>
+          <a href="#"><i class="fa fa-bolt"></i> <span>Materias cuatri</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -55,7 +43,7 @@
             @if (count(session('user.mat_cua.nombre')) > 0)
               @for ($i = 0; $i < count(session('user.mat_cua.nombre')) ; $i++)
                   <li>
-                    <a href="{{ route('unidad.index',['id'=>$cuatri['clave'][$i],'mod'=> $cuatri['mod'][$i]]) }}">
+                    <a href="{{ route('unidad.index',['id'=>$cuatri['clave'][$i],'mod'=> $cuatri['mod'][$i],'fk'=>$cuatri['fk_grupo'][$i]]) }}">
                         <h6><span class="fa fa-circle-o"> </span> {{ $cuatri['nombre'][$i] }}</h6>
                       </a>
                   </li>
@@ -66,7 +54,7 @@
           </ul>
         </li>
         <li class="treeview">
-          <a href="#"><i class="fa fa-bookmark"></i> <span>Materias Semestral</span>
+          <a href="#"><i class="fa fa-book"></i> <span>Materias Semestral</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -75,7 +63,7 @@
             @if (count(session('user.mat_cua.nombre')) > 0)
               @for ($i = 0; $i < count(session('user.mat_sem.nombre')) ; $i++)
                   <li>
-                    <a href="{{ route('unidad.index', ['id'=>$semestre['clave'][$i],'mod'=> $semestre['mod'][$i]]) }}">
+                    <a href="{{ route('unidad.index', ['id'=>$semestre['clave'][$i],'mod'=> $semestre['mod'][$i],'fk'=>$semestre['fk_grupo'][$i]]) }}">
                         <h6><span class="fa fa-circle-o"> </span> {{ $semestre['nombre'][$i] }}</h6>
                       </a>
                   </li>
@@ -84,13 +72,10 @@
               <li><a href="#"><h6>No hay materias asignadas</h6></a></li>
             @endif
           </ul>
-          
         </li>
 
-        <li class="header text-center">CONFIGURACIONES</li>
-        <li><a href="#"><i class="fa fa-gears"></i> <span>Configuración de cuenta</span></a></li>
-        
       </ul>
+
       <!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

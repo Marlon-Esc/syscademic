@@ -2,160 +2,67 @@
 @section('section', 'Planificación')
 @section('title', 'Unidades  >  Planificación')
 @section('content')
-@guest
-        @yield('login')
-  @else
-	<div class="row">
-		<div class="col-md-12">
-			<div class="box box-primary color-palette-box">
-				<div class="box-header with-border ">
-					<p><b><h4>Planificación de tu unidad</h4></b></p>
-					<p class="text-justify">En está sección encontraras toda la información por unidad de acuerdo al plan de estudios vigente. Podras editar, agregar y eliminar ésta información para adecuarlo a la planeación </p>
-				</div>
-				<div class="box-body">
-					<div class="row">
-						<div class="col-md-12">
-							<button type="button" class="btn btn-info pull-right" style="margin-right: 5px;" data-toggle="modal" data-target="#modal-aa">
-						        <i class="fa fa-pencil"></i> Planificar clase
-						    </button>
-						</div>
-					</div><br>
-					<div class="row">
-						<div class="col-md-4">
-							<div class="box box-info color-palette-box">
-								<div class="box-header with-border ">
-									<div class="row">
-										<div class="col-md-12">	
-											<div class="col-sm-1"><h2 class="text-center">0</h2></div>
-										    <div class="col-md-10 text-center"><p>Aprendizajes Esperados</p></div>
-										</div>
-										
-									</div>
-								</div>
-								<div class="box-body ">
-									<ul class="nav nav-pills nav-stacked">
-						                <li><a href="#" style=" border-left-color: #39CCCC;">No se han encontrado registros...</a></li>
-						                <li><a href="#" style="border-left-color: #39CCCC;">No se han encontrado registros...</a></li>
-						                <li><a href="#" style="border-left-color: #39CCCC;">No se han encontrado registros...</a></li>
-						                <br>
-						                <li>
-						                	<div class="row">
-												<div class="col-md-5 col-md-offset-3">
-													<button  onclick="$('#form-fech').submit();"  type="button" class="btn btn-block btn-warning">ver mas</button>
-												</div>
-											</div>
-						                </li>
-						              </ul>
-								</div>
-							</div>			
-						</div>
-						<div class="col-md-4">	
-							<div class="box box-success color-palette-box">
-								<div class="box-header with-border ">
-									<div class="row">
-										<div class="col-md-12">	
-											<div class="col-sm-1"><h2 class="text-center">0</h2></div>
-										    <div class="col-md-10 text-center"><p>Actividades de Aprendizaje</p></div>
-										</div>
-									</div>
-								</div>	
-								<div class="box-body">
-									<ul class="nav nav-pills nav-stacked">
-						                <li><a href="#" style=" border-left-color: #00a65a;">No se han encontrado registros...</a></li>
-						                <li><a href="#" style="border-left-color: #00a65a;">No se han encontrado registros...</a></li>
-						                <li><a href="#" style="border-left-color: #00a65a;">No se han encontrado registros...</a></li>
-						                <br>
-						                <li>
-						                	<div class="row">
-												<div class="col-md-5 col-md-offset-3">
-													<button type="button" class="btn btn-block btn-warning">ver mas</button>
-												</div>
-											</div>
-						                </li>
-						              </ul>
-								</div>
-							</div>		
-						</div>
-						<div class="col-md-4">	
-							<div class="box box-danger color-palette-box">
-								<div class="box-header with-border ">
-									<div class="row">
-										<div class="col-md-12">	
-											<div class="col-sm-1"><h2 class="text-center">0</h2></div>
-										    <div class="col-md-10 text-center"><p>Evidencias de Aprendizaje</p></div>
-										</div>
-									</div>
-								</div>
-								<div class="box-body">
-					              <ul class="nav nav-pills nav-stacked">
-					                <li><a href="#" style=" border-left-color: #f56954;">No se han encontrado registros...</a></li>
-					                <li><a href="#" style="border-left-color: #f56954;">No se han encontrado registros...</a></li>
-					                <li><a href="#" style="border-left-color: #f56954;">No se han encontrado registros...</a></li>
-					                <br>
-					                <li>
-					                	<div class="row">
-											<div class="col-md-5 col-md-offset-3">
-												<button type="button" class="btn btn-block btn-warning">ver mas</button>
-											</div>
-										</div>
-					                </li>
-					              </ul>
-								</div>
-							</div>		
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+@php
+	$sesion= session('reparto');
+	
+@endphp
+	
 	<div class="row">
 		<div class="col-md-12">
 			<div class="box box-success color-palette-box ">
 				<div class="box-header with-border">
-					<p ><b><h5  class="text-center">Distribuye las horas y las clases de tu unidad</h5></b></p>
-					<p  class="text-justify">Las horas y clases aquí propuestas son sugerencias propuestas por el sistema. Aquí puedes modificar y adecuar el tiempo según tu contenido educativo. Te invitamos a revisar tu calendario escolar para determinar que la fecha de incio y término de tu unidad sean correctas.</p>
+					<p ><b><h5  class="text-center">Planificación de temas</h5></b></p>
+					<p  class="text-justify">Los dias de clases propuestas son sugerencias por el sistema. Aquí puedes modificar y adecuar el tiempo según tu contenido educativo. Te invitamos a revisar tu calendario escolar para determinar que la fecha de inicio y término de tu unidad sean correctas.</p>
 				</div>
-				<div class="box-body">
-					<div class="row">
-						<div class="col-md-3">
-							<div class="row">
-								<div class="col-md-6 col-md-offset-3 text-center">
-									<label>Horas</label>
-									<input type="number" class="form-control text-center"  name="canti" value="1">
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="row">
-								<div class="col-md-6 col-md-offset-3 text-center">
-									<label>Clases</label>
-									<input type="number" class="form-control text-center"  name="canti" value="1">
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="row">
-								<div class="col-md-9 col-md-offset-2 text-center">
-									<form action="{{ route('unidad.fech',$mod) }}" method="post" id="form-fech">
-										{!!csrf_field()!!}
-										<div class="form-group text-center">
-							                <label>Inicio y fin de la unidad</label>
-							                  <div class="input-group">
-								                  <div class="input-group-addon">
-								                    <i class="fa fa-calendar"></i>
-								                  </div>
-								                  <input type="text" class="form-control pull-right text-center" name="range" id="reservation">
-								               </div>
-							              </div>
-									</form>
-						            </div>
-						        </div>    
-						    </div>
-					    </div>
-				    </div>
+				<div class="box-body table-responsive no-padding"><br>
+					<div class="col-xs-12">
+						<table class="table table-hover" id="myTable">
+			            	<thead>
+			            		<tr>
+			            			<th>Semana</th>
+			            			<th class="text-center">Fecha</th>
+			            			<th>Tema</th>
+			            			<th>Horas</th>
+			            			<th class="text-center">Acción</th>
+			            		</tr>
+			            	</thead>
+			            	<tbody>
+			            		@if ($desg_plan !== 0)
+			            		
+			            			@for ($i = 0; $i < count($desg_plan) ; $i++)
+			            				@php
+			            				   $after = $i+1;
+			            				   
+								           ($after == count($desg_plan)) ? $after = $i : '' ;
+
+			            				@endphp
+			            				@continue($desg_plan[$i]->fk_tema === null)
+			            				@if ($desg_plan[$i]->tema->no_unidad == $no_unidad)
+											<tr>
+												<td class="text-center">{{ $desg_plan[$i]->semana }}</td>
+												<td>{{date('d-m-Y',strtotime($desg_plan[$i]->fecha)) }}</td>
+												<td >{{ $desg_plan[$i]->tema->unidad  }}  {{ $desg_plan[$i]->tema->nom_tema  }}</td>
+						            			<td class="text-center">{{ $desg_plan[$i]->horas }}</td>
+						            			<td>
+						            				<a href="#" rel="tooltip" class="show-modal text-aqua btn-simple btn-sm" title="Ver tema"data-toggle="modal" data-target="#show" data-ae="{{ $desg_plan[$i]->aprendisaje_esperado	 }}" data-aa="{{ $desg_plan[$i]->actividad_aprendisaje }}" data-ea="{{ $desg_plan[$i]->evidencias_aprendido }}">
+										              <i class="fa fa-eye"></i>
+										            </a>
+										            <a href="#" class="edit-modal text-green btn-simple btn-sm" title="Editar tema" data-toggle="modal" data-target="#edit" data-id="{{$desg_plan[$i]->id  }}" data-fech="{{date('d-m-Y',strtotime($desg_plan[$i]->fecha)) }}" data-sem="{{ $desg_plan[$i]->semana }}" data-tem="{{ $desg_plan[$i]->tema->nom_tema }}" data-hrs="{{ $desg_plan[$i]->horas }}" data-ae="{{ $desg_plan[$i]->aprendisaje_esperado	 }}" data-aa="{{ $desg_plan[$i]->actividad_aprendisaje }}" data-ea="{{ $desg_plan[$i]->evidencias_aprendido }}">
+										              <i class="fa fa-edit"></i>
+										            </a>
+										       
+						            			</td>
+			            					</tr>
+			            				@endif
+			            			@endfor
+				            	@else
+				            		
+				            	@endif
+			            	</tbody>
+			            </table>
+					</div>
 			    </div>
 		    </div>
 	    </div>
-    @include('users.unidades.modals_addPlanin')
- @endguest
+ @include('users.unidades.modals_addPlanin')
 @endsection

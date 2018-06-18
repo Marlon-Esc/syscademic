@@ -10,13 +10,18 @@
 
     <title>SYSCADEMIC</title>
     <!-- Styles -->
+      
       <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
       <!-- Font Awesome -->
       <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+      <link rel="stylesheet" href="{{ asset('css/datatables.css') }}">
+      <link rel="stylesheet" href="{{ asset('css/alertify.min.css') }}">
       <!-- Ionicons -->
       <link rel="stylesheet" href="{{ asset('css/ionicons.min.css') }}">
       <!-- Theme style -->
       <link rel="stylesheet" href="{{ asset('css/AdminLTE.min.css') }}">
+
+
       <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
             page. However, you can choose any other skin. Make sure you
             apply the skin class to the body tag so the changes take effect. -->
@@ -39,7 +44,7 @@
             href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
 </head>
-<body class="hold-transition skin-green sidebar-mini fixed ">
+<body class="hold-transition skin-green sidebar-mini fixed" >
   @guest
         @yield('login')
   @else
@@ -69,6 +74,10 @@
 <script src="{{ asset('js/jquery.min.js') }} "></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+<script src=" {{ asset('js/jquery.dataTables.min.js') }} " ></script>
+<script src="{{ asset('js/dataTables.bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/alertify.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('js/select2.full.min.js') }} "></script>
 <script src="{{ asset('js/adminlte.min.js') }}"></script>
@@ -79,6 +88,10 @@
 <script src="{{ asset('js/bootstrap-colorpicker.min.js') }}"></script>
 
 <script src="{{ asset('js/function.js') }}"></script>
+<script src="{{ asset('js/unidades.js') }}"></script>
+<script type="text/javascript">
+  LoadDataTable('myTable');
+</script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
